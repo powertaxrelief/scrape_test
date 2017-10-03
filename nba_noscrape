@@ -1,4 +1,11 @@
 #!/bin/bash
+#Get values for the .CSV 
+echo "Name Team"
+read team
+echo "Name Stat"
+read stat
+
+#Final awk search...(Need to insert variables somehow)
 awk -F "," 'FNR == 3 {print $2,$5}' stats1.csv >> output2.txt
 cat output2.txt
 
