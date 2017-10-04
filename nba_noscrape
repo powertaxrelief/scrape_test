@@ -10,18 +10,21 @@ truncate -s 0 output2.txt
 truncate -s 0 temp.txt
 truncate -s 0 temp_b.txt
 
+#Find position of column given variable and assign it variable
 
-sed -e '2p' -e /$team/ stats1.csv >> temp_b.txt
-cut -c
+#sed for team variable
+sed -e '2p' -e '/$team/' stats1.csv >> temp_b.txt
 
 
+#sed for column variable and team
+echo "$team" "$stat"
 cat output2.txt
 
 done
 	
 while (( $team == "Warriors" )); do
   if (($stat == "FG" )); then
-          sed -e '2p' -e /Warriors/' stats1.csv >> temp.txt
+          sed -e '2p' -e '/Warriors/' stats1.csv >> temp.txt
 	  awk -F ',' '{print $2,$5}' temp.txt >> output.txt
 	  rm temp.txt
     cat output.txt
