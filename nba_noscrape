@@ -13,11 +13,7 @@ truncate -s 0 temp_b.txt
 for fn in 'cat stats1.csv'; do
 
 done
-awk -F ',' $stat="$5" '{print $2, $stat}' temp.txt | 
-
-
-#sed for column variable and team
-echo "$team" "$stat"
+awk -F ',' $stat="$5" '{print $2, $stat}' temp.txt >> output2.txt
 cat output2.txt
 
 done
