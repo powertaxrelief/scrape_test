@@ -12,9 +12,9 @@ truncate -s 0 temp.txt
 
 while (( $team == "Warriors" )); do
   if (($stat == "FG" )); then
-          sed '1b;/Warriors/!d' stats1.csv >> temp.txt	  
+          sed -e '2p' -e /Warriors/' stats1.csv >> temp.txt
 	  awk -F ',' '{print $2,$5}' temp.txt >> output4.txt
-	 
+	  rm temp.txt
     cat output4.txt
   else 
 	  :
