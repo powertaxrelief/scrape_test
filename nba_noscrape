@@ -10,10 +10,11 @@ truncate -s 0 output2.txt
 truncate -s 0 temp.txt
 truncate -s 0 temp_b.txt
 
-#Find position of column given variable and assign it variable
+for fn in 'cat stats1.csv'; do
 
-#grep for team variable
-grep "$team" stats1.csv >> temp_b.txt
+done
+awk -F ',' $stat="$5" '{print $2, $stat}' temp.txt | 
+
 
 #sed for column variable and team
 echo "$team" "$stat"
