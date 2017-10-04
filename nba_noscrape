@@ -12,9 +12,8 @@ truncate -s 0 temp_b.txt
 
 #Find position of column given variable and assign it variable
 
-#sed for team variable
-sed -e '2p' -e '/$team/' stats1.csv >> temp_b.txt
-
+#grep for team variable
+grep "$team" stats1.csv >> temp_b.txt
 
 #sed for column variable and team
 echo "$team" "$stat"
