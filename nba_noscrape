@@ -6,8 +6,19 @@ echo "Name Stat"
 read stat
 
 truncate -s 0 output.txt
+truncate -s 0 output2.txt
 truncate -s 0 temp.txt
+truncate -s 0 temp_b.txt
 
+
+sed -e '2p' -e /$team/ stats1.csv >> temp_b.txt
+cut -c
+
+
+cat output2.txt
+
+done
+	
 while (( $team == "Warriors" )); do
   if (($stat == "FG" )); then
           sed -e '2p' -e /Warriors/' stats1.csv >> temp.txt
