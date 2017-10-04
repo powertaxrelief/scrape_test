@@ -5,23 +5,20 @@ read team
 echo "Name Stat"
 read stat
 
+truncate -s 0 output4.txt
+truncate -s 0 output2.txt
+truncate -s 0 output3.txt
+truncate -s 0 temp.txt
 
-#Final awk search...(Need to insert variables somehow)
-
-#SO approved...not verified.  Should make team variable column 2 and stat variable column 5.  Maybe if/then or figure out loop to do rest.
-awk -v team="$team" -v stat="$stat" '$2 == team && $5 == stat' stats1.csv >> output3.txt
-awk -F "," 'FNR == 3 {print $2,$5}' stats1.csv >> output2.txt
-cat output2.txt
-
-#If, then statement captures user input and searches .CSV for specified variables.  This isn't a long term solution....loop?
-if (($team == "Warriors")) && (($stat == "FG" )); then
-  awk -v team="$team" -v stat="$stat" '$2 == team && $5 == stat' stats1.csv >> output4.txt
-else
-  echo "The code went....wrong?"
-fi
-
-#Test loop
-for (($team == "Warriors")); do
+while (( $team == "Warriors" )); do
   if (($stat == "FG" )); then
-    awk -v team="$team" -v stat="$stat" '$2 == team && $5 == stat' stats1.csv >> output4.txt
-  elseif (($stat == 
+          sed '1b;/Warriors/!d' stats1.csv >> temp.txt	  
+	  awk -F ',' '{print $2,$5}' temp.txt >> output4.txt
+	 
+    cat output4.txt
+  else 
+	  :
+  fi
+  break
+done
+
