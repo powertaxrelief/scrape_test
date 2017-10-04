@@ -5,17 +5,15 @@ read team
 echo "Name Stat"
 read stat
 
-truncate -s 0 output4.txt
-truncate -s 0 output2.txt
-truncate -s 0 output3.txt
+truncate -s 0 output.txt
 truncate -s 0 temp.txt
 
 while (( $team == "Warriors" )); do
   if (($stat == "FG" )); then
           sed -e '2p' -e /Warriors/' stats1.csv >> temp.txt
-	  awk -F ',' '{print $2,$5}' temp.txt >> output4.txt
+	  awk -F ',' '{print $2,$5}' temp.txt >> output.txt
 	  rm temp.txt
-    cat output4.txt
+    cat output.txt
   else 
 	  :
   fi
